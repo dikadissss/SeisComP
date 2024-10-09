@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<seiscomp>
+	<module name="scchkcfg" category="Utilities" standalone="true">
+		<description>Checks a module configuration.</description>
+		<command-line>
+			<synopsis>
+				scchkcfg {mod-name} [standalone]
+			</synopsis>
+		</command-line>
+	</module>
+</seiscomp>

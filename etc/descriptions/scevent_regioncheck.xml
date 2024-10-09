@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<seiscomp>
+	<plugin name="RegionCheck">
+		<extends>scevent</extends>
+		<description>evrc plugin for scevent</description>
+		<configuration>
+			<group name="rc">
+				<description>
+				Test if events lie within or outside geographic regions defined
+				by polygons.
+				Events within a region are flagged as positive, outside as negative.
+				The event type is set accordingly. Add the
+				plugin &quot;evrc&quot; to the plugins parameter in the
+				order of priority to make this feature available. Read the
+				documentation of the RegionCheck for more details.
+				</description>
+				<parameter name="setEventType" type="boolean" default="true">
+					<description>
+						Allow setting the event type.
+						The type of events which have manual origins will
+						not be changed unless configured explicitely by
+						&quot;overwriteManual&quot;.
+					</description>
+				</parameter>
+				<parameter name="overwriteEventType" type="boolean" default="true">
+					<description>
+						Allow overwriting existing event types. Disabling does not
+						allow accounting for changes in source region.
+					</description>
+				</parameter>
+				<parameter name="overwriteManual" type="boolean" default="false">
+					<description>
+						Allow setting the event type if the mode of the preferred
+						origin is manual or if the event type was set manually.
+					</description>
+				</parameter>
+				<parameter name="regions" type="list:string" default="!reject">
+					<description>
+					The list of closed polygon names defining regions for
+					flagging event as positive or negative.
+					A polygon name defines a positive region but names with
+					prefix !  (exclamation mark) define negative regions.
+					Evaluation is done in the order of the polygons. The last
+					matching criteria applies and the event type is set
+					accordingly.
+
+					Default: If events are not positive or are negative regions
+					the event type is set to &quot;outside of network
+					interest&quot;. Default:
+					&quot;!reject&quot;, use &quot;accecpt&quot; to overwrite
+					the default.
+
+					Examples:
+
+					Events are flagged positive within the polygon
+					&quot;germany&quot;:
+
+					germany
+
+					All events are flagged positive but events within the
+					polygon &quot;quarries&quot; are negative:
+
+					accept,!quarries
+
+					Events within the polygon &quot;germany&quot; are flagged
+					positive but all other events and events within the polygon
+					&quot;quarries&quot; are negaitve:
+
+					germany,!quarries
+
+					All events are flagged positive but events within the
+					polygon &quot;germany&quot; are negative and all events
+					within the polygon &quot;saxony&quot; are positive:
+
+					accept,!germany,saxony
+					</description>
+				</parameter>
+				<parameter name="readEventTypeFromBNA" type="boolean" default="false">
+					<description>
+					Consider the event type, minDepth and maxDepth values from
+					the polygons defined by GeoJSON or BNA files. Read the
+					documentation of the RegionCheck plugin for the details.
+
+					When eventType is defined in the polygons, the value
+					supersedes values of 'eventTypePositive' and
+					'eventTypeNegative'.
+					If not set, 'eventTypePositive' and 'eventTypeNegative' are
+					considered.
+					</description>
+				</parameter>
+				<parameter name="eventTypePositive" type="string" default="">
+					<description>
+						New type of an event which is flagged positive. Ignored
+						if 'readEventTypeFromBNA' is active and the polygons
+						define eventType.
+
+						Empty: Do not set type.
+					</description>
+				</parameter>
+				<parameter name="eventTypeNegative" type="string" default="&quot;outside of network interest&quot;">
+					<description>
+						New type of an event which is flagged negative. Ignored
+						if 'readEventTypeFromBNA' is active and the polygons
+						define eventType.
+
+						Empty means default: &quot;outside of network interest&quot;
+					</description>
+				</parameter>
+			</group>
+		</configuration>
+	</plugin>
+</seiscomp>

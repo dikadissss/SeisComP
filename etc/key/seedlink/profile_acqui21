@@ -1,0 +1,12 @@
+# Activated plugins for category sources
+sources = chain
+
+# Hostname or IP of the Seedlink server.
+sources.chain.address = acqui
+
+# Port of the Seedlink server
+sources.chain.port = 18000
+
+# List of stream selectors. If left empty all available streams will be
+# requested. See slinktool manpage for more information.
+sources.chain.selectors = HH?.D,SH?.D

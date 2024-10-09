@@ -1,0 +1,7 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 60 60" version="1.1" id="seiscomp3"><rect fill="#00889F" width="60" height="60" />
+		<g opacity="0.8">
+			<path fill="#FFFFFF" d="M54.92,5.08v49.84H5.08V5.08H54.92 M60,0H0v60h60V0L60,0z" />
+			<polygon fill="#FFFFFF" points="41.775,30.235 35.73,38.761 25.783,10.77 12.088,30.235 18.3,30.235 24.286,21.727 34.219,49.676 48.003,30.235" />
+		</g>
+	</svg>

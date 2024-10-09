@@ -1,0 +1,127 @@
+# The sensor location code of the preferred stream used e.g. by scautopick and
+# scrttv.
+detecLocid = 00
+
+# The channel code of the preferred stream used by e.g. scautopick and scrttv.
+# If no component code is given, the vertical component will be fetched from
+# inventory considering the channel orientation (azimuth, dip). If that
+# approach fails, 'Z' will be appended and used as fallback. Do not use regular
+# expressions!
+detecStream = SH
+
+# Considered distance measure between source and receiver. Possible values are
+# hypocentral: hypocentral distance
+# epicentral: epicentral distance
+magnitudes.Mbmkg.distMode = hypocentral
+
+# The minimum distance for computing magnitudes from amplitudes. Negative
+# values deactivate the check.
+magnitudes.Mbmkg.minDist = -1
+
+# The maximum distance for computing magnitudes from amplitudes. Negative
+# values deactivate the check.
+magnitudes.Mbmkg.maxDist = 6
+
+# The maximum source depth up to which magnitudes are computed.
+magnitudes.Mbmkg.maxDepth = 1000
+
+# Type of magnitude calibration formula to be considered. The calibration
+# parameters are considered accordingly. Currently supported are
+# "parametric": consider parameters of parametric configuration in parametric
+# section
+magnitudes.Mbmkg.calibrationType = "parametric"
+
+# The calibration value 'a1' applied in the parametric magnitude calibration
+# formula.
+magnitudes.Mbmkg.parametric.a1 = 1.342
+
+# The calibration value 'a2' applied in the magnitude calibration formula
+# parametric magnitude calibration formula.
+magnitudes.Mbmkg.parametric.a2 = 0.0002305
+
+# The calibration value 'a3' applied in the parametric magnitude calibration
+# formula.
+magnitudes.Mbmkg.parametric.a3 = -0.013
+
+# The calibration value 'b' applied in the parametric magnitude calibration
+# formula.
+magnitudes.Mbmkg.parametric.b = 1.0
+
+# The filter applied to raw records before applying Wood-Anderson simulation.
+amplitudes.Mbmkg.preFilter = INT(0)>>BW_HP(3,0.1)
+
+# Applying Wood-Anderson simulation. To achieve displacement records without WA
+# simulation, an integration filter can be applied with the pre-filter.
+amplitudes.Mbmkg.applyWoodAnderson = false
+
+# Scaling value multiplied to the measured amplitudes to match the amplitude
+# units expected by the magnitude calibration function.
+# Expected amplitudes are in units of mym but actual amplitudes provided from
+# Wood-Anderson-corrected seismograms are in units of mm: amplitudeScale =
+# 1000.
+# If data are not corrected for WA, measured amplitudes take the unit of
+# gain-corrected data considering the preFilter: amplitudeScale converts
+# between units of measured and excpected amplitude.
+amplitudes.Mbmkg.amplitudeScale = 1000
+
+# Type for measuring amplitudes. Available:
+# AbsMax: absolute maximum
+# MinMax: half difference between absolute maximum and minimum
+# PeakTrough: half difference between maximum and minimum on a half cycle
+amplitudes.Mbmkg.measureType = AbsMax
+
+# Define how to combine the amplitudes measured on both horizontals components:
+# min: take the minimum
+# max: take the maxium
+# avgerage: form the average
+# geometric_mean: form the geometric mean
+amplitudes.Mbmkg.combiner = max
+
+# Define the saturation threshold for the optional saturation check. By
+# default, the saturation check is disabled but giving a value above 0 will
+# enable it. Waveforms that are saturated are not used for amplitude
+# calculations.
+# This value can either be an absolute value of counts such as "100000" counts
+# or a relative value (optionally in percent) with respect to the number of
+# effective bits, e.g. "0.8@23" or "80%@23". The first version uses 1**23 * 0.8
+# whereas the latter uses 1**23 * 80/100.
+# The boolean value "false" explicitly disables the check.
+amplitudes.Mbmkg.saturationThreshold = 90%@23
+
+# Define if amplitude calculation of certain type is enabled.
+amplitudes.Mbmkg.enable = true
+
+# Define the minimum SNR to be reached to compute the amplitudes. This value is
+# amplitude type specific and has no global default value.
+amplitudes.Mbmkg.minSNR = 1.5
+
+# Override the default time (relative to the trigger time) of the begin of the
+# noise window used to compute the noise offset and noise amplitude. Each
+# amplitude processor sets its own noise time window and this option should
+# only be changed if you know what you are doing.
+amplitudes.Mbmkg.noiseBegin = -10
+
+# Override the default time (relative to the trigger time) of the end of the
+# signal window used to compute the final amplitude. Each amplitude processor
+# sets its own signal time window and this option should only be changed if you
+# know what you are doing.
+amplitudes.Mbmkg.signalEnd = min(tt(S)+20,150)
+
+# The maximum distance allowed to compute an amplitude. This settings has no
+# effect with e.g. scautopick as there is no information about the source of
+# the event to compute the distance. The default value is implementation
+# specific.
+amplitudes.Mbmkg.maxDist = 6
+
+# The maximum depth allowed to compute an amplitude. This settings has no
+# effect with e.g. scautopick as there is no information about the source of
+# the event to retrieve the depth. The default value is implementation specific.
+amplitudes.Mbmkg.maxDepth = 1000
+
+# Override the default time (relative to the trigger time) of the begin of the
+# signal window used to pick.
+picker.AIC.signalEnd = 3
+
+# Override the default filter which is "raw". The typical filter grammar can be
+# used.
+picker.AIC.filter = ITAPER(10)>>BW(3,0.7,2)

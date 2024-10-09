@@ -1,0 +1,2 @@
+03:50:46 [error/DETECT] Invalid path to template configuration file: /home/sysop/seiscomp/etc/scdetect-cc/templates.json
+Try --help for help

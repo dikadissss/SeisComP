@@ -1,0 +1,11 @@
+[Desktop Entry]
+Name=scmv
+GenericName=scmv
+Comment=Seiscomp6 scmv
+Exec=/home/sysop/seiscomp/bin/seiscomp exec scmv
+Icon=/home/sysop/PUSAT/data-seiscomp/icons/seiscomp3.svg
+Terminal=false
+Type=Application
+Categories=System;Settings;
+X-Ubuntu-Gettext-Domain=update-manager
+X-Unity-IconBackgroundColor=#4c9e39

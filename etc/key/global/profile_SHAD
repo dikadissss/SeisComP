@@ -1,0 +1,34 @@
+# The sensor location code of the preferred stream used e.g. by scautopick and
+# scrttv.
+detecLocid = ""
+
+# The channel code of the preferred stream used by e.g. scautopick and scrttv.
+# If no component code is given, the vertical component will be fetched from
+# inventory considering the channel orientation (azimuth, dip). If that
+# approach fails, 'Z' will be appended and used as fallback. Do not use regular
+# expressions!
+detecStream = SH
+
+# Define if amplitude calculation is enabled. If disabled, this station will be
+# skipped for amplitudes and magnitudes.
+amplitudes.enable = false
+
+# After data are converted in to the frequency domain that minimum frequency
+# defines the end of the left-side cosine taper for the frequency spectrum. The
+# taper applies from 0 Hz to {minFreq} Hz. A value of 0 or lower disables that
+# taper.
+amplitudes.MLc.resp.minFreq = 0.1
+
+# After data are converted in to the frequency domain that maximum frequency
+# defines the start of the right-side cosine taper for the frequency spectrum.
+# The taper applies from {maxFreq} Hz to {fNyquist} Hz. A value of 0 or lower
+# disables that taper.
+amplitudes.MLc.resp.maxFreq = 0
+
+# Override the default time (relative to the trigger time) of the begin of the
+# signal window used to pick.
+picker.AIC.signalEnd = 3
+
+# Override the default filter which is "raw". The typical filter grammar can be
+# used.
+picker.AIC.filter = ITAPER(10)>>BW(3,0.7,2)

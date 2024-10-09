@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<seiscomp>
+	<module name="bindings2cfg" category="Utilities">
+		<description>
+		Synchronize key files with configuration database or convert them to
+		configuration XML.
+		</description>
+		<command-line>
+			<synopsis>
+				bindings2cfg [options]
+			</synopsis>
+			<group name="Generic">
+				<optionReference>generic#help</optionReference>
+				<optionReference>generic#version</optionReference>
+				<optionReference>generic#config-file</optionReference>
+				<optionReference>generic#plugins</optionReference>
+				<optionReference>generic#print-config-vars</optionReference>
+				<optionReference>generic#validate-schema-params</optionReference>
+				<optionReference>generic#dump-settings</optionReference>
+				<optionReference>generic#daemon</optionReference>
+				<optionReference>generic#auto-shutdown</optionReference>
+				<optionReference>generic#shutdown-master-module</optionReference>
+				<optionReference>generic#shutdown-master-username</optionReference>
+			</group>
+
+			<group name="Verbosity">
+				<optionReference>verbosity#verbosity</optionReference>
+				<optionReference>verbosity#v</optionReference>
+				<optionReference>verbosity#quiet</optionReference>
+				<optionReference>verbosity#component</optionReference>
+				<optionReference>verbosity#syslog</optionReference>
+				<optionReference>verbosity#lockfile</optionReference>
+				<optionReference>verbosity#console</optionReference>
+				<optionReference>verbosity#debug</optionReference>
+				<optionReference>verbosity#log-file</optionReference>
+			</group>
+
+			<group name="Database">
+				<optionReference>database#db-driver-list</optionReference>
+				<optionReference>database#database</optionReference>
+				<optionReference>database#config-module</optionReference>
+				<optionReference>database#inventory-db</optionReference>
+				<optionReference>database#config-db</optionReference>
+			</group>
+
+			<group name="Messaging">
+				<optionReference>messaging#user</optionReference>
+				<optionReference>messaging#host</optionReference>
+				<optionReference>messaging#timeout</optionReference>
+				<optionReference>messaging#primary-group</optionReference>
+				<optionReference>messaging#subscribe-group</optionReference>
+				<optionReference>messaging#content-type</optionReference>
+				<optionReference>messaging#start-stop-msg</optionReference>
+			</group>
+
+			<group name="Input">
+				<option long-flag="key-dir" argument="arg">
+					<description>
+					Override the location of the default key directory,
+					which is $SEISCOMP_ROOT/etc/key .
+					</description>
+				</option>
+			</group>
+			<group name="Output">
+				<option flag="o" long-flag="output" argument="arg">
+					<description>
+					If given, an output XML file is generated. Use '-' for
+					stdout.
+					</description>
+				</option>
+				<option long-flag="create-notifier">
+					<description>
+					If given then a notifier message containing all notifiers
+					will be written to the output XML. This option only applies
+					if an output file is given. Notifier creation either requires
+					and input database and an input config XML as reference.
+					</description>
+				</option>
+			</group>
+		</command-line>
+	</module>
+</seiscomp>

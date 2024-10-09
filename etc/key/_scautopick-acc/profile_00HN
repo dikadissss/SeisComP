@@ -1,0 +1,25 @@
+# The sensor location code of the preferred stream used e.g. by scautopick and
+# scrttv.
+detecLocid = 00
+
+# The channel code of the preferred stream used by e.g. scautopick and scrttv.
+# If no component code is given, the vertical component will be fetched from
+# inventory considering the channel orientation (azimuth, dip). If that
+# approach fails, 'Z' will be appended and used as fallback. Do not use regular
+# expressions!
+detecStream = HN
+
+# Enables/disables picking on a station.
+detecEnable = true
+
+# Defines the filter to be used for picking.
+detecFilter = "RMHP(10)>>ITAPER(30)>>BW_HP(2,5)>>STALTA(0.2,10)"
+
+# For which value on the filtered waveform is a pick detected.
+trigOn = 3
+
+# The value the filtered waveform must reach to enable a detection again.
+trigOff = 1.5
+
+# The time correction applied to a pick.
+timeCorr = -0.8

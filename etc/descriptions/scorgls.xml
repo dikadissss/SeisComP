@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<seiscomp>
+	<module name="scorgls" category="Utilities">
+		<description>List origin IDs from database.</description>
+		<command-line>
+		<synopsis>
+		scorgls [options]
+		</synopsis>
+			<group name="Generic">
+				<optionReference>generic#help</optionReference>
+				<optionReference>generic#version</optionReference>
+				<optionReference>generic#config-file</optionReference>
+				<optionReference>generic#plugins</optionReference>
+				<optionReference>generic#daemon</optionReference>
+				<optionReference>generic#auto-shutdown</optionReference>
+				<optionReference>generic#shutdown-master-module</optionReference>
+				<optionReference>generic#shutdown-master-username</optionReference>
+			</group>
+
+			<group name="Verbosity">
+				<optionReference>verbosity#verbosity</optionReference>
+				<optionReference>verbosity#v</optionReference>
+				<optionReference>verbosity#quiet</optionReference>
+				<optionReference>verbosity#component</optionReference>
+				<optionReference>verbosity#syslog</optionReference>
+				<optionReference>verbosity#lockfile</optionReference>
+				<optionReference>verbosity#console</optionReference>
+				<optionReference>verbosity#debug</optionReference>
+				<optionReference>verbosity#log-file</optionReference>
+			</group>
+
+			<group name="Database">
+				<optionReference>database#db-driver-list</optionReference>
+				<optionReference>database#database</optionReference>
+				<optionReference>database#config-module</optionReference>
+				<optionReference>database#inventory-db</optionReference>
+				<optionReference>database#db-disable</optionReference>
+			</group>
+
+			<group name="Input">
+				<option flag="i" long-flag="input" argument="arg">
+					<description>
+					Name of input XML file. Read from stdin if '-' is given.
+					Deactivates reading origins from database.
+					</description>
+				</option>
+			</group>
+
+			<group name="Origins">
+				<option long-flag="begin" argument="time">
+					<description>
+					The lower bound of the time interval. Format:
+					&quot;2012-01-01 00:00:00&quot;.
+					</description>
+				</option>
+				<option long-flag="end" argument="time">
+					<description>
+					The upper bound of the time interval. Format:
+					&quot;2012-01-01 00:00:00&quot;.
+					</description>
+				</option>
+			</group>
+
+			<group name="Output">
+				<option long-flag="delimiter" flag="D" argument="string">
+					<description>
+					The delimiter of the resulting origin IDs.
+					</description>
+				</option>
+			</group>
+		</command-line>
+	</module>
+</seiscomp>
